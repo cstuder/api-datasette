@@ -1,0 +1,16 @@
+{
+    "name": "cstuder/api-datasette",
+    "description": "Datasettes containing data related to api.existenz.ch",
+    "type": "project",
+    "require": {
+        "cstuder/parse-hydrodaten": "^1.0",
+        "cstuder/parse-swissmetnet": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Studer",
+            "email": "cstuder@existenz.ch"
+        }
+    ]
+}

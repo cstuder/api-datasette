@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "api-datasette"
+version = "0.1.0"
+description = "Datasettes containing data related to api.existenz.ch"
+authors = ["Christian Studer <cstuder@existenz.ch>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+datasette = "^0.54.1"
+sqlite-utils = "^3.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

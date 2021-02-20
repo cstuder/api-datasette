@@ -1,0 +1,32 @@
+api:
+  smn-locations:
+    url: https://api.existenz.ch/apiv1/smn/locations
+    primary-key: code
+    fields:
+      - key: code
+        type: text
+        path: name
+
+      - key: name
+        type: text
+        path: details.name
+
+      - key: lat
+        type: real
+        path: details.lat
+
+      - key: lon
+        type: real
+        path: details.lon
+
+      - key: alt
+        type: real
+        path: details.alt
+
+      - key: chx
+        type: real
+        path: details.chx
+
+      - key: chy
+        type: real
+        path: details.chy

@@ -4,8 +4,8 @@ import requests
 import sqlite3
 import os
 
-db_filename = r"existenz-api.db"
-api_definition_file = r"existenz-api-definition.yaml"
+db_filename = "existenz-api.db"
+api_definition_file = "existenz-api-definition.yaml"
 
 # Delete old database
 os.remove(db_filename)
@@ -41,3 +41,9 @@ with open(api_definition_file) as file:
             values = []
 
             # TODO collect values
+
+# Save
+c.commit()
+c.close()
+
+print("Done.")

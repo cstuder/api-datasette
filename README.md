@@ -1,10 +1,9 @@
 # api-datasette
 
-Datasettes containing data related to api.existenz.ch
+Datasettes containing data related to [api.existenz.ch](https://api.existenz.ch).
 
 ## Structure
 
-- Raw data gets downloaded to `/rawdata`.
-- Parsed by PHP libraries and outputs CSVs to `/rawdata`.
-- `sqlite-utils` converts CSVs to SQLite.
-- `datasette` shows databases as webpages.
+- Raw metadata gets downloaded from the Existenz-API.
+- Gets put into `existenz-api.db` ([SQLite file](https://sqlite.org)).
+- [datasette](https://datasette.io) displays the dataas webpages.

@@ -14,6 +14,19 @@ os.remove(db_filename)
 db = sqlite3.connect(db_filename)
 c = db.cursor()
 
+# Helpers
+def get_value_from_path(values, path):
+    path_parts = path.split(".")
+    current = values
+
+    while len(path_parts) > 0:
+        p = path_parts.pop(0)
+
+        current = current[p]
+
+    return current
+
+
 # Get definitions
 with open(api_definition_file) as file:
     definitions = yaml.safe_load(file)
@@ -26,11 +39,13 @@ with open(api_definition_file) as file:
         )
 
         create_query = f"CREATE TABLE {api} ({fields_string})"
-
         print(create_query)
 
-        # TODO run create query
-        # TODO run CREATE UNIQUE INDEX {definition['api']}_{definition['primary-key']}_index ON {definition['api']}({definition['primary-key']})
+        c.execute(create_query)
+
+        c.execute(
+            f"CREATE UNIQUE INDEX {api}_{definition['primary-key']}_index ON {api}({definition['primary-key']})"
+        )
 
         print(f"Fetching data from {definition['url']}")
         r = requests.get(definition["url"])
@@ -40,10 +55,15 @@ with open(api_definition_file) as file:
         for key, row in r.json()["payload"].items():
             values = []
 
-            # TODO collect values
+            for field in definition["fields"]:
+                values.append(get_value_from_path(row, field["path"]))
+
+            c.execute(
+                f"INSERT INTO {api} VALUES(?,?,?,?,?,?,?)", values
+            )  # TODO fix ????
 
 # Save
-c.commit()
-c.close()
+db.commit()
+db.close()
 
 print("Done.")

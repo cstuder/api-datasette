@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "datasette-cluster-map": {
+      "latitude_column": "lat",
+      "longitude_column": "lon"
+    }
+  }
+}

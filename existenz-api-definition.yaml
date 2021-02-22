@@ -1,5 +1,5 @@
-api:
-  smn-locations:
+api: # Note: API names can only contain letters, numbers and underscores. (No dashes!)
+  smn_locations:
     url: https://api.existenz.ch/apiv1/smn/locations
     primary-key: code
     fields:
@@ -11,22 +11,38 @@ api:
         type: text
         path: details.name
 
+      # Known issue: lat und lon sind vertauscht hier
       - key: lat
-        type: real
-        path: details.lat
-
-      - key: lon
         type: real
         path: details.lon
 
-      - key: alt
+      - key: lon
         type: real
+        path: details.lat
+
+      - key: alt
+        type: integer
         path: details.alt
 
       - key: chx
-        type: real
+        type: integer
         path: details.chx
 
       - key: chy
-        type: real
+        type: integer
         path: details.chy
+
+      - key: station_webpage
+        type: string
+        path: name
+        prefix: "https://www.meteoswiss.admin.ch/home/measurement-values.html?station="
+
+      - key: latest_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/smn/latest?locations="
+
+      - key: last_24h_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/smn/daterange?locations="

@@ -31,20 +31,22 @@ def get_value_from_path(values, path):
 with open(api_definition_file) as file:
     definitions = yaml.safe_load(file)
 
-    for api, definition in definitions["api"].items():
-        print(f"Generating database for API {api}")
+    for api_name, definition in definitions["api"].items():
+        print(f"Generating database for API {api_name}")
 
         fields_string = ", ".join(
             [f"{field['key']} {field['type']}" for field in definition["fields"]]
         )
 
-        create_query = f"CREATE TABLE {api} ({fields_string})"
+        question_marks = ",".join("?" for field in definition["fields"])
+
+        create_query = f"CREATE TABLE {api_name} ({fields_string})"
         print(create_query)
 
         c.execute(create_query)
 
         c.execute(
-            f"CREATE UNIQUE INDEX {api}_{definition['primary-key']}_index ON {api}({definition['primary-key']})"
+            f"CREATE UNIQUE INDEX {api_name}_{definition['primary-key']}_index ON {api_name}({definition['primary-key']})"
         )
 
         print(f"Fetching data from {definition['url']}")
@@ -56,11 +58,14 @@ with open(api_definition_file) as file:
             values = []
 
             for field in definition["fields"]:
-                values.append(get_value_from_path(row, field["path"]))
+                value = get_value_from_path(row, field["path"])
 
-            c.execute(
-                f"INSERT INTO {api} VALUES(?,?,?,?,?,?,?)", values
-            )  # TODO fix ????
+                if "prefix" in field:
+                    value = f"{field['prefix']}{value}"
+
+                values.append(value)
+
+            c.execute(f"INSERT INTO {api_name} VALUES({question_marks})", values)
 
 # Save
 db.commit()

@@ -1,3 +1,7 @@
 https://api.existenz.ch/apiv1/smn/locations
 ###
 https://api.existenz.ch/apiv1/smn/parameters
+###
+https://api.existenz.ch/apiv1/hydro/locations
+###
+https://api.existenz.ch/apiv1/hydro/parameters

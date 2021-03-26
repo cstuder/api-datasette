@@ -8,7 +8,7 @@ Run `poetry run python generate.py`
 
 - Raw metadata gets downloaded from the Existenz-API.
 - Gets put into `existenz-api.db` ([SQLite file](https://sqlite.org)).
-- [datasette](https://datasette.io) displays the dataas webpages.
+- [datasette](https://datasette.io) displays the database as webpages.
 
 ## Start Datasette
 

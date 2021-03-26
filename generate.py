@@ -3,6 +3,7 @@ import yaml
 import requests
 import sqlite3
 import os
+import json
 
 db_filename = "existenz-api.db"
 api_definition_file = "existenz-api-definition.yaml"
@@ -15,6 +16,8 @@ db = sqlite3.connect(db_filename)
 c = db.cursor()
 
 # Helpers
+
+
 def get_value_from_path(values, path):
     path_parts = path.split(".")
     current = values
@@ -40,6 +43,11 @@ with open(api_definition_file) as file:
 
         question_marks = ",".join("?" for field in definition["fields"])
 
+        if "popup" in definition:
+            # Add popup item
+            fields_string += ", popup"
+            question_marks += ",?"
+
         create_query = f"CREATE TABLE {api_name} ({fields_string})"
         print(create_query)
 
@@ -64,6 +72,20 @@ with open(api_definition_file) as file:
                     value = f"{field['prefix']}{value}"
 
                 values.append(value)
+
+            # Construct popup
+            if "popup" in definition:
+                popup = {
+                    "title": get_value_from_path(row, definition["popup"]["title"]),
+                    "description": get_value_from_path(
+                        row, definition["popup"]["description"]
+                    ),
+                    "alt": get_value_from_path(row, definition["popup"]["alt"]),
+                    "link": f"/existenz-api/{api_name}?code="
+                    + get_value_from_path(row, definition["popup"]["link"]),
+                }
+
+                values.append(json.dumps(popup))
 
             c.execute(f"INSERT INTO {api_name} VALUES({question_marks})", values)
 

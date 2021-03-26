@@ -1,7 +1,12 @@
 api: # Note: API names can only contain letters, numbers and underscores. (No dashes!)
   smn_locations:
-    url: https://api.existenz.ch/apiv1/smn/locations
+    url: http://localhost:8000/apiv1/smn/locations
     primary-key: code
+    popup:
+      title: name
+      description: details.name
+      alt: details.name
+      link: name
     fields:
       - key: code
         type: text
@@ -11,18 +16,21 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: text
         path: details.name
 
-      # Known issue: lat und lon sind vertauscht hier
       - key: lat
         type: real
-        path: details.lon
+        path: details.lat
 
       - key: lon
         type: real
-        path: details.lat
+        path: details.lon
 
       - key: alt
         type: integer
         path: details.alt
+
+      - key: alt_barometric
+        type: integer
+        path: details.alt-barometric
 
       - key: chx
         type: integer
@@ -32,10 +40,34 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: integer
         path: details.chy
 
-      - key: station_webpage
+      - key: station_type
         type: string
-        path: name
-        prefix: "https://www.meteoswiss.admin.ch/home/measurement-values.html?station="
+        path: details.station-type
+
+      - key: data_owner
+        type: string
+        path: details.data-owner
+
+      - key: data_since
+        type: string
+        path: details.data-since
+
+      - key: canton
+        type: string
+        path: details.canton
+
+      - key: measurements
+        type: string
+        path: details.measurements
+
+      - key: link
+        type: string
+        path: details.link
+
+      - key: wigos_id
+        type: string
+        path: details.wigos-id
+        prefix: "https://oscar.wmo.int/surface/#/search/station/stationReportDetails/"
 
       - key: latest_values
         type: string
@@ -48,7 +80,7 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         prefix: "https://api.existenz.ch/apiv1/smn/daterange?locations="
 
   smn_parameters:
-    url: https://api.existenz.ch/apiv1/smn/parameters
+    url: http://localhost:8000/apiv1/smn/parameters
     primary-key: name
     fields:
       - key: name
@@ -57,7 +89,7 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
 
       - key: code
         type: text
-        path: details.code
+        path: details.id
 
       - key: unit
         type: real

@@ -12,4 +12,4 @@ Run `poetry run python generate.py`
 
 ## Start Datasette
 
-`datasette existenz-api.db -m metadata.json``
+`datasette existenz-api.db -m metadata.json`

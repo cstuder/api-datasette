@@ -2,6 +2,8 @@
 
 Datasettes containing data related to [api.existenz.ch](https://api.existenz.ch).
 
+`LIVE`: <https://api-datasette.konzept.space>
+
 ## Structure
 
 Run `poetry run python generate.py`
@@ -13,3 +15,14 @@ Run `poetry run python generate.py`
 ## Start Datasette
 
 `datasette existenz-api.db -m metadata.json`
+
+## Deployment
+
+Run `git push dokku main`
+
+If any dependencies have changed: Run `poetry export -f requirements.txt --output requirements.txt` and commit the file.
+
+### Deployment setup
+
+- Create an dokku app on `konzept.space`.
+- `git remote add dokku dokku@konzept.space:api-datasette`

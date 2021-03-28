@@ -9,11 +9,11 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
       link: name
     fields:
       - key: code
-        type: text
+        type: string
         path: name
 
       - key: name
-        type: text
+        type: string
         path: details.name
 
       - key: lat
@@ -84,11 +84,11 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
     primary-key: name
     fields:
       - key: name
-        type: text
+        type: string
         path: name
 
       - key: code
-        type: text
+        type: string
         path: details.id
 
       - key: unit
@@ -108,3 +108,84 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: string
         path: name
         prefix: "https://api.existenz.ch/apiv1/smn/daterange?parameters="
+
+  hydro_locations:
+    url: http://localhost:8000/apiv1/hydro/locations
+    primary-key: station_id
+    popup:
+      title: name
+      description: details.name
+      alt: details.name
+      link: name
+    fields:
+      - key: station_id
+        type: string
+        path: name
+
+      - key: name
+        type: string
+        path: details.name
+
+      - key: water_body_name
+        type: string
+        path: details.water-body-name
+
+      - key: water_body_type
+        type: string
+        path: details.water-body-type
+
+      - key: lat
+        type: real
+        path: details.lat
+
+      - key: lon
+        type: real
+        path: details.lon
+
+      - key: chx
+        type: integer
+        path: details.chx
+
+      - key: chy
+        type: integer
+        path: details.chy
+
+      - key: latest_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/hydro/latest?locations="
+
+      - key: last_24h_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/hydro/daterange?locations="
+
+  hydro_parameters:
+    url: http://localhost:8000/apiv1/hydro/parameters
+    primary-key: name
+    fields:
+      - key: name
+        type: string
+        path: name
+
+      - key: unit
+        type: real
+        path: unit
+
+      - key: type
+        type: real
+        path: details.type
+
+      - key: description
+        type: text
+        path: details.name
+
+      - key: latest_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/hydro/latest?parameters="
+
+      - key: last_24h_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/hydro/daterange?parameters="

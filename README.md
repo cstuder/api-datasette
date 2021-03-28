@@ -20,7 +20,7 @@ Run `poetry run python generate.py`
 
 Run `git push dokku main`
 
-If any dependencies have changed: Run `poetry export -f requirements.txt --output requirements.txt` and commit the file.
+If any dependencies have changed: Run `poetry export --without-hashes -f requirements.txt --output requirements.txt` and commit the file.
 
 ### Deployment setup
 

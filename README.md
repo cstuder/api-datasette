@@ -22,7 +22,11 @@ Run `git push dokku main`
 
 If any dependencies have changed: Run `poetry export --without-hashes -f requirements.txt --output requirements.txt` and commit the file.
 
+If new plugins are required, add their installation to `post_compile`.
+
 ### Deployment setup
 
 - Create an dokku app on `konzept.space`.
 - `git remote add dokku dokku@konzept.space:api-datasette`
+
+Dokku will identify this as a Python project, load the appropriate buildpack, run the `post_compile` script and then start serving the service defined in the `Procfile`. Pretty nifty.

@@ -11,7 +11,8 @@ def generate():
     api_definition_file = "existenz-api-definition.yaml"
 
     # Delete old database
-    os.remove(db_filename)
+    if os.path.exists(db_filename):
+        os.remove(db_filename)
 
     # Open database
     db = sqlite3.connect(db_filename)

@@ -1,1 +1,2 @@
+datasette install datasette-cluster-map
 python generate.py

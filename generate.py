@@ -63,15 +63,24 @@ def generate():
 
                 # Construct popup
                 if "popup" in definition:
+                    p = definition["popup"]
+
                     popup = {
-                        "title": get_value_from_path(row, definition["popup"]["title"]),
-                        "description": get_value_from_path(
-                            row, definition["popup"]["description"]
-                        ),
-                        "alt": get_value_from_path(row, definition["popup"]["alt"]),
-                        "link": f"/existenz-api/{api_name}?code="
-                        + get_value_from_path(row, definition["popup"]["link"]),
+                        "title": get_value_from_path(row, p["title"]),
+                        "description": get_value_from_path(row, p["description"]),
+                        "alt": get_value_from_path(row, p["alt"]),
+                        "link": f"/existenz-api/{api_name}?{definition['primary-key']}="
+                        + get_value_from_path(row, p["link"]),
                     }
+
+                    if "image" in p:
+                        i = p["image"]
+
+                        popup["image"] = (
+                            i["prefix"]
+                            + get_value_from_path(row, i["path"])
+                            + i["suffix"]
+                        )
 
                     values.append(json.dumps(popup))
 

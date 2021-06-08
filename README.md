@@ -16,19 +16,21 @@ Run `poetry run python generate.py`
 
 `datasette existenz-api.db -m metadata.json`
 
-## Deployment
-
-Run `git push dokku main`
-
 ## Update
 
 `poetry add datasette:latest`
 
 `poetry update`
 
+If Datasette has changed: Re-run plugin installations, i.e. `datasette install datasette-cluster-map`.
+
 If any dependencies have changed: Run `poetry export --without-hashes -f requirements.txt --output requirements.txt` and commit the file.
 
 If new plugins are required, add their installation to `post_compile`.
+
+## Deployment
+
+Run `git push dokku main`
 
 ### Deployment setup
 

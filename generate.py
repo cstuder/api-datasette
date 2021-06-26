@@ -59,6 +59,9 @@ def generate():
                     if "prefix" in field:
                         value = f"{field['prefix']}{value}"
 
+                    if "suffix" in field:
+                        value = f"{value}{field['suffix']}"
+
                     values.append(value)
 
                 # Construct popup

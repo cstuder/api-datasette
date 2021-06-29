@@ -32,6 +32,8 @@ If new plugins are required, add their installation to `post_compile`.
 
 Run `git push dokku main`
 
+If without changes and you just want to rebuild: `git commit --allow-empty -m "..."`
+
 ### Deployment setup
 
 - Create a dokku app on `konzept.space` with `dokku apps:create api-datasette; dokku letsencrypt:enable api-datasette`

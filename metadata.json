@@ -1,6 +1,6 @@
 {
   "title": "Existenz.ch Data APIs Metadata",
-  "description": "Locations and parameters for SwissMetNet (MeteoSwiss) and Hydrodaten (BAFU/FOEN).",
+  "description": "Locations and parameters for SwissMetNet (MeteoSwiss) and Hydrodaten (BAFU/FOEN), along with Existenz.ch custom sensors",
   "source": "api.existenz.ch",
   "source_url": "https://api.existenz.ch/",
   "plugins": {

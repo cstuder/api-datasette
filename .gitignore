@@ -133,3 +133,6 @@ dmypy.json
 
 # DB
 existenz-api.db
+
+# MacOS
+.DS_Store

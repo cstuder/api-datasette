@@ -195,3 +195,72 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: string
         path: name
         prefix: "https://api.existenz.ch/apiv1/hydro/daterange?parameters="
+
+  sensors_locations:
+    url: https://api.existenz.ch/apiv1/sensors/locations
+    primary-key: name
+    popup:
+      title: name
+      description: name
+      alt: name
+      link: name
+    fields:
+      - key: name
+        type: string
+        path: name
+
+      - key: lat
+        type: real
+        path: details.lat
+
+      - key: lon
+        type: real
+        path: details.lon
+
+      - key: device_id
+        type: string
+        path: details.device_id
+
+      - key: brand
+        type: string
+        path: details.brand
+
+      - key: model
+        type: string
+        path: details.model
+
+      - key: latest_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/sensors/latest?locations="
+
+      - key: last_24h_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/sensors/daterange?locations="
+
+  sensors_parameters:
+    url: https://api.existenz.ch/apiv1/sensors/parameters
+    primary-key: name
+    fields:
+      - key: name
+        type: string
+        path: name
+
+      - key: unit
+        type: real
+        path: unit
+
+      - key: original_name
+        type: string
+        path: details.original_name
+
+      - key: latest_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/sensors/latest?parameters="
+
+      - key: last_24h_values
+        type: string
+        path: name
+        prefix: "https://api.existenz.ch/apiv1/sensors/daterange?parameters="

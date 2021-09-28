@@ -32,7 +32,7 @@ If new plugins are required, add their installation to `post_compile`.
 
 Run `git push dokku main`
 
-If without changes and you just want to rebuild: `git commit --allow-empty -m "..."`
+If without changes and you just want to rebuild: `git commit --allow-empty -m "Rebuild."`
 
 ### Deployment setup
 

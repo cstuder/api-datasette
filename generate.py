@@ -103,7 +103,10 @@ def get_value_from_path(values, path):
     while len(path_parts) > 0:
         p = path_parts.pop(0)
 
-        current = current[p]
+        if p in current:
+            current = current[p]
+        else:
+            return None
 
     return current
 

@@ -229,6 +229,10 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: string
         path: details.model
 
+      - key: source
+        type: string
+        path: details.source
+
       - key: latest_values
         type: string
         path: name
@@ -251,9 +255,13 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
         type: real
         path: unit
 
-      - key: original_name
+      - key: dragino_name
         type: string
-        path: details.original_name
+        path: details.dragino_name
+
+      - key: temperaare_name
+        type: string
+        path: details.temperaare_name
 
       - key: latest_values
         type: string

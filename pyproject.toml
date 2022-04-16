@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-datasette = "^0.59.4"
+datasette = "^0.61.1"
 requests = "^2.25.1"
 PyYAML = "^5.4.1"
 

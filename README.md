@@ -28,6 +28,12 @@ If any dependencies have changed: Run `poetry export --without-hashes -f require
 
 If new plugins are required, add their installation to `post_compile`.
 
+## Upgrade Python
+
+See officially supported runtimes here: <https://devcenter.heroku.com/articles/python-support#supported-runtimes>
+
+To switch to a new Python version on Dokku, update the string in `runtime.txt` and push to Dokku.
+
 ## Deployment
 
 Run `git push dokku main`

@@ -14,7 +14,7 @@ Run `poetry run python generate.py`
 
 ## Start Datasette
 
-`datasette existenz-api.db -m metadata.json`
+`poetry run datasette existenz-api.db -m metadata.json`
 
 ## Update
 
@@ -22,11 +22,19 @@ Run `poetry run python generate.py`
 
 `poetry update`
 
-If Datasette has changed: Re-run plugin installations, i.e. `datasette install datasette-cluster-map`.
+If Datasette has changed: Re-run plugin installations, i.e. `poetry run datasette install datasette-cluster-map`.
 
 If any dependencies have changed: Run `poetry export --without-hashes -f requirements.txt --output requirements.txt` and commit the file.
 
 If new plugins are required, add their installation to `post_compile`.
+
+### Initial setup
+
+`brew install pipx`
+
+`pipx install poetry`
+
+`pipx inject poetry poetry-plugin-export`
 
 ## Upgrade Python
 

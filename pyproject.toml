@@ -7,9 +7,9 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-datasette = "^0.64.3"
+datasette = "^0.64.6"
 requests = "^2.25.1"
-PyYAML = "6.0"
+PyYAML = "6.0.1"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^20.8b1", allow-prereleases = true}

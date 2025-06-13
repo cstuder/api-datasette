@@ -26,7 +26,7 @@ def generate():
             print(f"Generating database for API {api_name}")
 
             fields_string = ", ".join(
-                [f"{field['key']} {field['type']}" for field in definition["fields"]]
+                [f"'{field['key']}' {field['type']}" for field in definition["fields"]]
             )
 
             question_marks = ",".join("?" for field in definition["fields"])

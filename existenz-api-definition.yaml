@@ -38,11 +38,11 @@ api: # Note: API names can only contain letters, numbers and underscores. (No da
 
       - key: chx
         type: integer
-        path: details.chx-lv95
+        path: details.chx
 
       - key: chy
         type: integer
-        path: details.chy-lv95
+        path: details.chy
 
       - key: station_type
         type: string

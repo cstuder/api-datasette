@@ -24,8 +24,6 @@ Run `poetry run python generate.py`
 
 If Datasette has changed: Re-run plugin installations, i.e. `poetry run datasette install datasette-cluster-map`.
 
-If any dependencies have changed: Run `poetry export --without-hashes -f requirements.txt --output requirements.txt` and commit the file.
-
 If new plugins are required, add their installation to `post_compile`.
 
 ### Initial setup
@@ -40,7 +38,7 @@ If new plugins are required, add their installation to `post_compile`.
 
 See officially supported runtimes here: <https://devcenter.heroku.com/articles/python-support#supported-runtimes>
 
-To switch to a new Python version on Dokku, update the string in `runtime.txt` and push to Dokku.
+To switch to a new Python version on Dokku, update the string in `.python-version` and push to Dokku.
 
 ## Deployment
 

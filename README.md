@@ -6,7 +6,7 @@ Datasettes containing data related to [api.existenz.ch](https://api.existenz.ch)
 
 ## Structure
 
-Run `poetry run python generate.py`
+Run `uv run python generate.py`
 
 - Raw metadata gets downloaded from the Existenz-API.
 - Gets put into `existenz-api.db` ([SQLite file](https://sqlite.org)).
@@ -14,25 +14,25 @@ Run `poetry run python generate.py`
 
 ## Start Datasette
 
-`poetry run datasette existenz-api.db -m metadata.json`
+`uv run datasette existenz-api.db -m metadata.json`
 
 ## Update
 
-`poetry add datasette:latest`
+`uv lock --upgrade-package datasette`
 
-`poetry update`
+`uv lock --upgrade`
 
-If Datasette has changed: Re-run plugin installations, i.e. `poetry run datasette install datasette-cluster-map`.
+`uv sync`
+
+If Datasette has changed: Re-run plugin installations, i.e. `uv run datasette install datasette-cluster-map`.
 
 If new plugins are required, add their installation to `post_compile`.
 
 ### Initial setup
 
-`brew install pipx`
+`brew install uv`
 
-`pipx install poetry`
-
-`pipx inject poetry poetry-plugin-export`
+`uv sync`
 
 ## Upgrade Python
 

@@ -7,6 +7,15 @@
     "datasette-cluster-map": {
       "latitude_column": "lat",
       "longitude_column": "lon"
+    },
+    "datasette-ip-rate-limit": {
+      "debug": true,
+      "rules": [
+        {
+          "paths": ["/*"],
+          "block_seconds": 20
+        }
+      ]
     }
   }
 }

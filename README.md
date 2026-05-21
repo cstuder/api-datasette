@@ -24,7 +24,7 @@ Run `uv run python generate.py`
 
 `uv sync`
 
-If Datasette has changed: Re-run plugin installations, i.e. `uv run datasette install datasette-cluster-map`.
+If Datasette has changed: Re-run plugin installations, i.e. `uv run datasette install datasette-cluster-map datasette-ip-rate-limit`.
 
 If new plugins are required, add their installation to `post_compile`.
 

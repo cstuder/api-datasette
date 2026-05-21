@@ -1,2 +1,2 @@
-datasette install datasette-cluster-map
+datasette install datasette-cluster-map datasette-ip-rate-limit
 python generate.py

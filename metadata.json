@@ -9,11 +9,14 @@
       "longitude_column": "lon"
     },
     "datasette-ip-rate-limit": {
-      "debug": true,
+      "debug": false,
       "rules": [
         {
           "paths": ["/*"],
-          "block_seconds": 20
+          "block_seconds": 360,
+          "window_seconds": 60,
+          "max_requests": 10,
+          "query_params_min": 1
         }
       ]
     }

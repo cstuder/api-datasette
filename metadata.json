@@ -15,7 +15,7 @@
           "paths": ["/*"],
           "block_seconds": 360,
           "window_seconds": 60,
-          "max_requests": 10,
+          "max_requests": 15,
           "query_params_min": 1
         }
       ]
